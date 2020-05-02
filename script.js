@@ -313,16 +313,16 @@ const Dictator = (function(UI){
             voices = speechSyn.getVoices();
             voices.forEach(voice=>{
                 //Creating option with textContent and value Attribute
-                if(voice.lang.includes("en"))//Filtering English Voices
-                {
+                // if(voice.lang.includes("en"))//Filtering English Voices
+                // {
                     let option = document.createElement("option");
                     option.textContent = voice.name;
                     option.setAttribute("value",voice.name);
                     UISelectors.select_voices.appendChild(option);
-                }        
+                // }        
             });
 
-        },0)
+        },50)
     }
     function speak(text){   
         // New keyword is needed for Utterance not for speechSynthesis above 
@@ -360,7 +360,7 @@ const Dictator = (function(UI){
             })
 
             selectedOption.selected = "selected";
-        },0)
+        },50)
 
     }
 
@@ -506,7 +506,7 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
             let pitch = UISelectors.pitch_range.value;
             let rate = UISelectors.rate_range.value;
 
-            LocalStorage.dictatorAdd(voiceName,pitch,rate);
+            LocalStorage.dictatorAdd(voiceName,rate,pitch);
         })
         UISelectors.result.addEventListener('click',function(e){
             e.preventDefault();
