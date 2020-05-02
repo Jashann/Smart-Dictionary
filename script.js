@@ -322,7 +322,6 @@ const Dictator = (function(UI){
                 }        
             });
 
-            populateSelect();
             if (speechSynthesis.onvoiceschanged !== undefined) {
                 speechSynthesis.onvoiceschanged = populateSelect;
             }
