@@ -322,12 +322,12 @@ const Dictator = (function(UI){
                 }        
             });
 
-        },50);
+            populateSelect();
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = populateSelect;
+            }
 
-        populateSelect();
-        if (speechSynthesis.onvoiceschanged !== undefined) {
-            speechSynthesis.onvoiceschanged = populateSelect;
-        }
+        },50);
 
     }
     function speak(text){   
