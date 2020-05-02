@@ -313,7 +313,7 @@ const Dictator = (function(UI){
             voices = speechSyn.getVoices();
             voices.forEach(voice=>{
                 //Creating option with textContent and value Attribute
-                if(voice.name.includes("English"))//Filtering English Voices
+                if(voice.lang.includes("en"))//Filtering English Voices
                 {
                     let option = document.createElement("option");
                     option.textContent = voice.name;
