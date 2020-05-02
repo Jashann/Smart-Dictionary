@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dictionary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Resources/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="./Resources/CSS/style.css">
+</head>
+<body>
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light">
+
+        <a class="navbar-brand text-info" href="index.html"> Smart Dictionary </a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-items">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item active"> <a class="nav-link" href="#"> Home </a> </li>
+                <li class="nav-item active"> <a class="nav-link" href="#"> Features </a> </li>
+                <li class="nav-item active"> <a class="nav-link" data-toggle="modal" href="#bookmarker"> Bookmark </a> </li>
+                <li class="nav-item active"> <a class="nav-link" data-toggle="modal" href="#speechMaker"> Verbaliser </a> </li>
+            </ul>
+        </div>
+    </nav>
+
+
+     <!-- Start of Dictator -->
+     <div class="modal" id="speechMaker">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div>
+                    <h5 class="modal-title text-info" id="exampleModalLabel">Speech Verbaliser</h5>
+                    <span class="lead"> (These settings affect Dictionary pronouncing once SPEAK NOW is clicked) </span> 
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+
+              </div>
+              <div class="modal-body">
+                <textarea class="form-control" id="input-to-speak"  placeholder="Enter a text to be dictated..." name="" id="" cols="30" rows="4"> Hey, How are you? </textarea>
+                <div class="form-group mt-4">
+                    <label for="selectVoices">Voices</label>
+                    <select class="form-control" name="" id="select-voices">
+                        <!-- <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option> -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label id="rate-value" for="rate">Rate: 1</label>
+                    <input id="rate-range" class="form-control-range" type="range" id="rate" min="0.5" max="2.0" step="0.1" value="1">
+                </div>
+                <div class="form-group">
+                    <label id="pitch-value" for="pitch">Pitch: 1</label>
+                    <input  id="pitch-range" class="form-control-range" type="range" id="pitch" min="0.5" max="2.0" step="0.1" value="1">
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn rounded-pill btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="btn-speak" class="btn rounded-pill btn-info">Speak Now</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Dictator -->
+
+
+    <!-- Start of Bookmark -->
+    <div class="modal" id="bookmarker">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h3 class="text-info">Bookmarker</h3>
+                        <div class="lead">(The bookmarked words are show here)</div>
+                    </div>
+                    <button data-dismiss="modal" class="close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="bookmarker-words">
+                   <!-- <div>
+                        <span class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1"></label>
+                        </span>
+
+                        <span>1.</span> 
+                        <a class="text-info searchable h5 text-capitalize h5" href="#"> Desire</a> 
+                        <span>: to long or hope for : exhibit or feel desire for</span>
+                   </div>
+                   <div>
+                    <span class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                        <label class="custom-control-label" for="customCheck2"></label>
+                    </span>
+
+                        <span class="text-dark">2.</span>
+                        <a class="text-info searchable h5 text-capitalize h5" href="#">Wish</a> 
+                        <span>: to have a desire for (something, such as something unattainable)</span>
+                   </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-back" class="btn rounded-pill btn-primary">Go Back</button> 
+                    <button type="button" id="btn-delete" class="btn rounded-pill btn-danger">Select Delete</button> 
+                    <!-- Select Delete is used in javascript so don't change textContent -->
+                    <button type="button" class="btn rounded-pill btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End of Bookmark -->
+
+
+    <!-- Start of Highlight Box -->
+    <div class="highlight-box">
+        <div>
+            <h4 class="highlight-text text-light text-center mb-4">Desire</h4>
+            <a id="btn-highlight-search" class="btn-highlight">Search <img src="./Resources/Icons/iconfinder_icon-111-search_314807.svg" alt="" sizes="" srcset=""> </a>
+            <a id="btn-highlight-pronounce" class="btn-highlight">Pronounce <img src="./Resources/Icons/iconfinder_mic-microphone-record-speak_2205213.svg" alt="" sizes="" srcset=""> </a>
+        </div>
+    </div>
+    <!-- End of Highlight Box -->
+
+
+    <!-- Start of alreadyBookmarked -->
+    <div id="already-bookmarked" class="py-4 px-3 my-3 container bg-danger d-none">
+        <h4 class="text-light">Desire is already bookmarked!!</h4> 
+    </div>
+    <!-- End of alreadyBookmarked -->
+
+
+    <!-- Start of Dictionary -->
+    <section class="my-5">   
+        <div class="container">
+            <div class="card py-5 px-3">
+
+                <div class="form-group">
+                    <div class="input-group">
+                      <input id="input-look-up" type="text" class="form-control rounded-pill" placeholder="Look Up">
+                      <div class="input-group-append ml-2">
+                        <button id="btn-search" class="input-group-text px-5 rounded-pill bg-info text-light">Search</button>
+                      </div>
+                    </div>
+                </div>
+
+                <div id="results">
+                    <div class="py-4 px-3 my-3"> 
+                        <h1 value="desire" class="text-capitalize">Desire <span class="h4">[di-ˈzī(-ə)r] </span>
+                            <a href="#"> <img src="./Resources/Icons/iconfinder_mic-microphone-record-speak_2205213.svg" alt="" srcset=""> </a>  
+                            <a href="#"> <span id="bookmark-icon"> </span> </a>
+                            
+                        </h1>
+                        <hr>
+                        <h3 class="text-capitalize">noun</h3>
+                        <h5 class="text-capitalize">desire, desired, desires, desiring</h5>
+                        <ol>
+                            <li>to long or hope for : exhibit or feel desire for</li>
+                            <li>to express a wish for : request</li> 
+                            <li>to express a wish to : ask</li>
+                        </ol>
+                        <div class="synonyms">
+                            <span class="h6">Synonyms:</span> <a class="searchable h5 px-1" href="#">Desire</a> <a class="searchable h5 px-1" href="#">Want</a> <a class="searchable h5 px-1" href="#">Wish</a>
+                        </div>
+                    </div>
+                    <!-- <div class="py-4 px-3 my-3">
+                        <h2>Did you mean?</h2>
+                        <a class='text-capitalize' href="#">Desire</a> / <a class='text-capitalize' href="#">Sire</a> / <a class='text-capitalize' href="#">Dlsr</a> / <a class='text-capitalize' href="#">Dire</a>
+                    </div> -->
+                     <!-- <div class="py-4 px-3 my-3 bg-danger text-light">
+                        <h2>Warning!</h2>
+                        Your internet connection is down 
+                        <br>
+                        Try Again after connecting. 
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ENd of Dictionary -->
+
+
+    <script src="script.js"></script>
+     <!-- jQuery first, then Popper.js (IT IS REMOVED), then Bootstrap JS -->
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

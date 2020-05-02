@@ -1,0 +1,106 @@
+:root{
+    --primary-col: #1F9BCF;
+}
+body{
+    font-family: "Quicksand";
+    font-weight: 400;
+}
+
+.navbar{
+    padding: 1rem;
+    /* background: linear-gradient(to right,#51c4d5, #6dd5ed); */
+}
+.navbar-light .navbar-toggler{
+    border-color: transparent;
+}
+
+a{
+    text-decoration: none;
+}
+
+.searchable{
+    color: var(--primary-col);
+    font-weight: bolder;
+}
+
+#results > div{
+    background: rgb(238, 238, 238);
+    background-color: rgb(247, 247, 247);
+    border: 1px #e6e6e6 solid;
+}
+#results > div img{
+    height: 30px;
+     width: auto;
+}
+
+#bookmark-icon{
+    border: 2px solid #000;
+    background: black;
+    width: 20px;
+    height: 30px;
+    display: inline-block;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 52% 66%, 0 100%, 0 100%);
+}
+
+.highlight-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background-color: var(--primary-col);
+    padding: 5px;
+    padding-bottom: 50px;
+    min-width: 250px;
+    min-height: 160px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 36% 75%, 23% 100%, 23% 75%, 0% 75%);
+    border-radius: 5px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    
+    transition: 0.2s all;
+    transition-delay: 1s;
+    opacity: 0;
+    visibility: hidden;
+}
+.highlight-box.show{
+    opacity: 1;
+    visibility: visible;
+}
+.highlight-box .btn-highlight{
+    display: inline-block;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.highlight-box .btn-highlight img{
+    height: 20px;
+    width: auto;
+}
+
+#already-bookmarked.show{
+    display: block !important;
+}
+
+
+.custom-control{
+  display: none;
+}
+.custom-control.show{
+  display: inline-block;
+}
+.custom-control-label::after{
+  background: #d9534f no-repeat 50% / 50% 50%;
+}
+
+#btn-back{
+  display: none;
+}
+#btn-back.show{
+  display: inline-block;
+}
