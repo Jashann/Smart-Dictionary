@@ -312,17 +312,23 @@ const Dictator = (function(UI){
 
             voices = speechSyn.getVoices();
             voices.forEach(voice=>{
-                //Creating option with textContent and value Attribute
-                // if(voice.lang.includes("en"))//Filtering English Voices
-                // {
+                // Creating option with textContent and value Attribute
+                if(voice.lang.includes("en"))//Filtering English Voices
+                {
                     let option = document.createElement("option");
                     option.textContent = voice.name;
                     option.setAttribute("value",voice.name);
                     UISelectors.select_voices.appendChild(option);
-                // }        
+                }        
             });
 
-        },50)
+        },50);
+
+        populateSelect();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = populateSelect;
+        }
+
     }
     function speak(text){   
         // New keyword is needed for Utterance not for speechSynthesis above 
