@@ -322,13 +322,9 @@ const Dictator = (function(UI){
                 }        
             });
 
-            if (speechSynthesis.onvoiceschanged !== undefined) {
-                speechSynthesis.onvoiceschanged = populateSelect;
-            }
-
         },50);
-
     }
+
     function speak(text){   
         // New keyword is needed for Utterance not for speechSynthesis above 
         const utterance = new window.SpeechSynthesisUtterance();
@@ -500,7 +496,11 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
 
 
         // Start of Dictating Related 
-        Dictator.populateSelect();
+
+        // Dictator.populateSelect();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = Dictator.populateSelect();
+        }
         UISelectors.pitch_range.addEventListener("change", Dictator.pitch_range_OnChange);
         UISelectors.rate_range.addEventListener("change", Dictator.rate_range_OnChange);
         UISelectors.btn_speak.addEventListener("click", function(){
