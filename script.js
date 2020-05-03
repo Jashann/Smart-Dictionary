@@ -309,23 +309,34 @@ const Dictator = (function(UI){
     function populateSelect(){
 
         // setTimeout(function(){ //To make browser wait so voices have been loaded
+        window.speechSynthesis.onvoiceschanged = function(){
+                voices = speechSyn.getVoices();
+                // voices.forEach(voice=>{
+                //     // Creating option with textContent and value Attribute
+                //     if(voice.lang.includes("en"))//Filtering English Voices
+                //     {
+                //         let option = document.createElement("option");
+                //         option.textContent = voice.name;
+                //         option.setAttribute("value",voice.name);
+                //         UISelectors.select_voices.appendChild(option);
+                //     }        
+                // });
+                for(let i = 0; i < voices.length ; i++){
+                    if(voices[i].lang.includes("en"))//Filtering English Voices
+                    {
+                        let option = document.createElement("option");
+                        option.textContent = voices[i].name;
+                        option.setAttribute("value",voices[i].name);
+                        UISelectors.select_voices.appendChild(option);
+                    }        
+                }
+            }
         // },50);
         
-        window.speechSynthesis.onvoiceschanged = function(){
-            voices = speechSyn.getVoices();
-            voices.forEach(voice=>{
-                // Creating option with textContent and value Attribute
-                if(voice.lang.includes("en"))//Filtering English Voices
-                {
-                    let option = document.createElement("option");
-                    option.textContent = voice.name;
-                    option.setAttribute("value",voice.name);
-                    UISelectors.select_voices.appendChild(option);
-                }        
-            });
-        }
-            
+        
     }
+
+
 
     function speak(text){   
         // New keyword is needed for Utterance not for speechSynthesis above 
@@ -499,7 +510,7 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
 
         // Start of Dictating Related 
         Dictator.populateSelect();
-
+    
         UISelectors.pitch_range.addEventListener("change", Dictator.pitch_range_OnChange);
         UISelectors.rate_range.addEventListener("change", Dictator.rate_range_OnChange);
         UISelectors.btn_speak.addEventListener("click", function(){
