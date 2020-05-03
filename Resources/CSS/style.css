@@ -114,14 +114,14 @@ a{
 
 
 
-
+.feature{
+    background: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
+}
 .feature:nth-child(even){
     clip-path: polygon(0 0, 100% 0, 93% 100%, 7% 100%);
-    background: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
 }
 .feature:nth-child(odd){
     clip-path: polygon(7% 0, 93% 0, 100% 100%, 0 100%);
-    background: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
 }
 .feature .row > *{
     border-radius: 30px;
