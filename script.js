@@ -308,8 +308,10 @@ const Dictator = (function(UI){
 
     function populateSelect(){
 
-        setTimeout(function(){ //To make browser wait so voices have been loaded
-
+        // setTimeout(function(){ //To make browser wait so voices have been loaded
+        // },50);
+        
+        window.speechSynthesis.onvoiceschanged = function(){
             voices = speechSyn.getVoices();
             voices.forEach(voice=>{
                 // Creating option with textContent and value Attribute
@@ -321,8 +323,8 @@ const Dictator = (function(UI){
                     UISelectors.select_voices.appendChild(option);
                 }        
             });
-
-        },50);
+        }
+            
     }
 
     function speak(text){   
@@ -496,17 +498,7 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
 
 
         // Start of Dictating Related 
-
-        // Dictator.populateSelect();
-        function tryToLoad(){
-            if (speechSynthesis.onvoiceschanged !== undefined) {
-                speechSynthesis.onvoiceschanged = Dictator.populateSelect();
-            }
-            else{
-                tryToLoad();
-            };
-        }
-        tryToLoad();
+        Dictator.populateSelect();
 
         UISelectors.pitch_range.addEventListener("change", Dictator.pitch_range_OnChange);
         UISelectors.rate_range.addEventListener("change", Dictator.rate_range_OnChange);
