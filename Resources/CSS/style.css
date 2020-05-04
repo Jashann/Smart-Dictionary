@@ -13,8 +13,12 @@ body{
     background-color: rgba(255, 255, 255, 0.9);
 }
 
+#logo{
+    height: 50px;
+}
+
 .navbar{
-    padding: 1rem;
+    padding: 0.7rem;
     /* background: linear-gradient(to right,#51c4d5, #6dd5ed); */
 }
 .navbar-light .navbar-toggler{
