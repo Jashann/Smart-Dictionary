@@ -142,3 +142,19 @@ a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@media (max-width:768px){
+    #logo{
+        height: 45px;
+    }
+}
+@media (max-width:500px){
+    #logo{
+        height: 40px;
+    }
+}
+@media (max-width:400px){
+    #logo{
+        height: 30px;
+    }
+}
