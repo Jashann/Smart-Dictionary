@@ -118,6 +118,7 @@ const UI = (function(){
         bookmarker: document.querySelector("#bookmarker"),
         bookmarker_words: document.querySelector("#bookmarker-words"),
         already_bookmarked: document.querySelector("#already-bookmarked"),
+        add_bookmarked: document.querySelector("#add-bookmarked"),
         btn_delete: document.querySelector("#btn-delete"),
         btn_back: document.querySelector("#btn-back"),
         checkbox_ADDRESS: ".custom-control",
@@ -327,8 +328,6 @@ const Dictator = (function(UI){
         
     }
 
-
-
     function speak(text){   
         // New keyword is needed for Utterance not for speechSynthesis above 
         const utterance = new window.SpeechSynthesisUtterance();
@@ -350,6 +349,7 @@ const Dictator = (function(UI){
     function rate_range_OnChange(e){
         UISelectors.rate_value.textContent = "Rate: "+UISelectors.rate_range.value;
     }
+
     //Local Storage
     function changeVoice(voiceName){
 
@@ -393,6 +393,7 @@ const Bookmarker = (function(UI){
 
       //Start of addToBookmarker
       function addToBookmarker(word,meaning){
+
         let count =  UISelectors.bookmarker_words.childElementCount + 1; // count = words already bookmarked plus 1 = 
         let innerHTML = 
         `
@@ -406,7 +407,6 @@ const Bookmarker = (function(UI){
             <span>: ${meaning}</span>
         </div>
         `;
-        
         UISelectors.bookmarker_words.innerHTML += innerHTML;
 
     }
@@ -442,6 +442,14 @@ const Bookmarker = (function(UI){
         },3000)
     }
     //End of showAlreadyAddedToBookmark
+    //Start of showAddedToBookmark
+    function showAddedToBookmark(text){
+        UISelectors.add_bookmarked.classList.remove("d-none");
+        setTimeout(()=>{
+            UISelectors.add_bookmarked.classList.add("d-none");
+        },3000)
+    }
+    //End of showAddedToBookmark
 
     // Public functions
     return{
@@ -449,6 +457,7 @@ const Bookmarker = (function(UI){
         showState,
         hideState,
         showAlreadyAddedToBookmark,
+        showAddedToBookmark
     }
 })(UI);
 //End of Bookmarker
@@ -557,6 +566,7 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
                     Bookmarker.showAlreadyAddedToBookmark(text);
                 }
                 else{ //if already is false then this runs
+                    Bookmarker.showAddedToBookmark();
                     Bookmarker.addToBookmarker(text,meaning);
                     LocalStorage.bookmarkAdd(text,meaning);
                 }
