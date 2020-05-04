@@ -309,28 +309,19 @@ const Dictator = (function(UI){
     function populateSelect(){
 
         // setTimeout(function(){ //To make browser wait so voices have been loaded
-        window.speechSynthesis.onvoiceschanged = function(){
-                voices = speechSyn.getVoices();
-                // voices.forEach(voice=>{
-                //     // Creating option with textContent and value Attribute
-                //     if(voice.lang.includes("en"))//Filtering English Voices
-                //     {
-                //         let option = document.createElement("option");
-                //         option.textContent = voice.name;
-                //         option.setAttribute("value",voice.name);
-                //         UISelectors.select_voices.appendChild(option);
-                //     }        
-                // });
-                for(let i = 0; i < voices.length ; i++){
-                    if(voices[i].lang.includes("en"))//Filtering English Voices
-                    {
-                        let option = document.createElement("option");
-                        option.textContent = voices[i].name;
-                        option.setAttribute("value",voices[i].name);
-                        UISelectors.select_voices.appendChild(option);
-                    }        
-                }
-            }
+
+            voices = speechSyn.getVoices();
+            voices.forEach(voice=>{
+                // Creating option with textContent and value Attribute
+                if(voice.lang.includes("en"))//Filtering English Voices
+                {
+                    let option = document.createElement("option");
+                    option.textContent = voice.name;
+                    option.setAttribute("value",voice.name);
+                    UISelectors.select_voices.appendChild(option);
+                }        
+            });
+        
         // },50);
         
         
@@ -362,7 +353,7 @@ const Dictator = (function(UI){
     //Local Storage
     function changeVoice(voiceName){
 
-        setTimeout(function(){ //To make browser wait so voices have been loaded
+        // setTimeout(function(){ //To make browser wait so voices have been loaded
 
             let options = UISelectors.select_voices.children; //options = html collection of all options
             options = Array.from(options);
@@ -374,7 +365,8 @@ const Dictator = (function(UI){
             })
 
             selectedOption.selected = "selected";
-        },50)
+
+        // },50)
 
     }
 
@@ -509,6 +501,8 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
 
 
         // Start of Dictating Related 
+        speechSynthesis.addEventListener("voiceschanged",Dictator.populateSelect); // Runs when voices are loaded.
+
         Dictator.populateSelect();
     
         UISelectors.pitch_range.addEventListener("change", Dictator.pitch_range_OnChange);
@@ -678,11 +672,13 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
             let object = LocalStorage.dictatorGet();
             if(object) //if object is not null
             {
-                UISelectors.rate_range.value = object.rate;
-                UISelectors.pitch_range.value = object.pitch;
-                Dictator.pitch_range_OnChange();
-                Dictator.rate_range_OnChange();
-                Dictator.changeVoice(object.voiceName);
+                speechSynthesis.addEventListener("voiceschanged", function(){ // runs once voices are loaded.
+                    UISelectors.rate_range.value = object.rate;
+                    UISelectors.pitch_range.value = object.pitch;
+                    Dictator.pitch_range_OnChange();
+                    Dictator.rate_range_OnChange();
+                    Dictator.changeVoice(object.voiceName);
+                })
             }
         }
         //Returning to use in deleteBookmark 
