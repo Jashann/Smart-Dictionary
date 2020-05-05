@@ -32,12 +32,12 @@ a:hover {
     text-decoration: none;
 }
 
-.searchable{
-    color: var(--primary-col);
-    font-weight: bolder;
+.card.py-5.px-3{
+    border-radius: 20px;
 }
 
 #results > div{
+    border-radius: 20px;
     background: rgb(238, 238, 238);
     background-color: rgb(247, 247, 247);
     border: 1px #e6e6e6 solid;
@@ -45,6 +45,11 @@ a:hover {
 #results > div img{
     height: 30px;
      width: auto;
+}
+
+.searchable{
+    color: var(--primary-col);
+    font-weight: bolder;
 }
 
 #bookmark-icon{
