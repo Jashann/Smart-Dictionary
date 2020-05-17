@@ -8,6 +8,8 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="./Resources/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="./Resources/CSS/style.css">
+    <link rel="stylesheet" href="./Resources/CSS/colorful.css">
+    <link rel="stylesheet" href="./Resources/CSS/dark.css">
 </head>
 <body>
     
@@ -26,10 +28,63 @@
                 <li class="nav-item active"> <a class="nav-link" href="index.html"> Home </a> </li>
                 <li class="nav-item"> <a class="nav-link" href="features.html"> Features </a> </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="modal" href="#bookmarker"> Bookmark </a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="modal" href="#speechMaker"> Verbaliser </a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="modal" href="#speechMaker"> Dictator </a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="modal" href="#themes"> Themes </a> </li>
             </ul>
         </div>
     </nav>
+
+    <!-- Start of Themes -->
+    <div class="modal" id="themes">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title text-info" id="exampleModalLabel">Themes</h5>
+                        <span class="lead"> (These settings will stay after reloading) </span> 
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4 mb-2">
+                            <img class="img-fluid" src="./Resources/Themes/light.jpg" alt="">
+                            <div class="custom-control custom-radio mt-2">
+                                <input type="radio" id="light" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="light">Light Mode</label>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-2">
+                            <img class="img-fluid" src="./Resources/Themes/colorful.png.jpg" alt="">
+                            <div class="custom-control custom-radio mt-2">
+                                <input type="radio" id="colorful" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="colorful">Colorful Mode</label>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-2">
+                            <img class="img-fluid" src="./Resources/Themes/dark.png.jpg" alt="">
+                            <div class="custom-control custom-radio mt-2">
+                                <input type="radio" id="dark" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="dark">Dark Mode</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn rounded-pill btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="btn-apply" class="btn rounded-pill btn-info">Apply</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- End of Themes -->
 
 
      <!-- Start of Dictator -->
@@ -68,6 +123,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn rounded-pill btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="btn-stop" class="btn rounded-pill btn-danger">Stop</button>
                 <button type="button" id="btn-speak" class="btn rounded-pill btn-info">Speak Now</button>
               </div>
             </div>
@@ -162,8 +218,11 @@
                     </div>
                 </div>
 
+                <div class="loader my-5"></div>
+
                 <div id="results">
-                    <div class="py-4 px-3 my-3"> 
+
+                    <!-- <div class="py-4 px-3 my-3"> 
                         <h1 value="desire" class="text-capitalize">Desire <span class="h4">[di-ˈzī(-ə)r] </span>
                             <a href="#"> <img src="./Resources/Icons/iconfinder_mic-microphone-record-speak_2205213.svg" alt="" srcset=""> </a>  
                             <a href="#"> <span id="bookmark-icon"> </span> </a>
@@ -180,7 +239,7 @@
                         <div class="synonyms">
                             <span class="h6">Synonyms:</span> <a class="searchable h5 px-1" href="#">Desire</a> <a class="searchable h5 px-1" href="#">Want</a> <a class="searchable h5 px-1" href="#">Wish</a>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <div class="py-4 px-3 my-3">
                         <h2>Did you mean?</h2>
                         <a class='text-capitalize' href="#">Desire</a> / <a class='text-capitalize' href="#">Sire</a> / <a class='text-capitalize' href="#">Dlsr</a> / <a class='text-capitalize' href="#">Dire</a>

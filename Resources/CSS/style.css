@@ -1,8 +1,9 @@
 :root{
     --primary-col: #1F9BCF;
+    --border-radius: 15px;
 }
 body{
-    font-family: "Quicksand";
+    font-family: "Quicksand","Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
 }
 
@@ -19,7 +20,6 @@ body{
 
 .navbar{
     padding: 0.7rem;
-    /* background: linear-gradient(to right,#51c4d5, #6dd5ed); */
 }
 .navbar-light .navbar-toggler{
     border-color: transparent;
@@ -33,14 +33,20 @@ a:hover {
 }
 
 .card.py-5.px-3{
-    border-radius: 20px;
+    border-radius: var(--border-radius);
+}
+
+#speechMaker .modal-content,
+#bookmarker .modal-content{
+    border-radius: var(--border-radius);
+    border: transparent;
 }
 
 #results > div{
-    border-radius: 20px;
-    background: rgb(238, 238, 238);
-    background-color: rgb(247, 247, 247);
-    border: 1px #e6e6e6 solid;
+    border-radius: var(--border-radius);
+    background: rgb(247, 247, 249);
+    background-color: rgb(247, 247, 249);
+    border: 1px #eeeeee solid;
 }
 #results > div img{
     height: 30px;
@@ -107,13 +113,13 @@ a:hover {
 }
 
 
-.custom-control{
+#bookmarker .custom-control{
   display: none;
 }
-.custom-control.show{
+#bookmarker .custom-control.show{
   display: inline-block;
 }
-.custom-control-label::after{
+#bookmarker .custom-control-label::after{
   background: #d9534f no-repeat 50% / 50% 50%;
 }
 
@@ -124,7 +130,21 @@ a:hover {
   display: inline-block;
 }
 
-
+#themes .custom-radio .custom-control-input:checked ~ .custom-control-label::after{
+    background: #1f9bcf;
+    border-radius: 50%;
+    transform: scale(1.1);
+}
+#themes .custom-control-label::after{
+    border: #1f9bcf 1px solid;
+    border-radius: 50%;
+}
+#themes #btn-apply{
+    display: none;
+}
+#themes #btn-apply.show{
+    display: inline-block;
+}
 
 .feature{
     background: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
@@ -146,7 +166,31 @@ a:hover {
     background: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin: 20px 0 !important;
 }
+
+.loader {
+    border: transparent; /* Light grey */
+    border-top: 10px solid var(--primary-col); /* Blue */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+    display: none;
+    margin: auto;
+}
+.loader.show{
+    display: block;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
 
 @media (max-width:768px){
     #logo{
@@ -163,3 +207,4 @@ a:hover {
         height: 30px;
     }
 }
+

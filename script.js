@@ -102,6 +102,9 @@ const UI = (function(){
     //Private Variables & functions
 
     const UISelectors = {
+        //Universal
+        body: document.body,
+        // Related to Searching
         result: document.querySelector("#results"),
         btn_search: document.querySelector("#btn-search"),
         input_lookup: document.querySelector("#input-look-up"),
@@ -112,6 +115,7 @@ const UI = (function(){
         rate_range: document.querySelector("#rate-range"),
         rate_value: document.querySelector("#rate-value"),
         btn_speak: document.querySelector("#btn-speak"),
+        btn_stop: document.querySelector("#btn-stop"),
         input_to_speak: document.querySelector("#input-to-speak"),
         //Related to Bookmark
         bookmark_icon_ADDRESS: "#bookmark-icon",
@@ -129,15 +133,25 @@ const UI = (function(){
         highlight_text: document.querySelector(".highlight-text"),
         highlight_btn_search: document.querySelector("#btn-highlight-search"),
         highlight_btn_pronounce: document.querySelector("#btn-highlight-pronounce"),
+        //Related to Loader
+        loader: document.querySelector(".loader"),
+        //Related to Themes
+        theme_btn_apply: document.querySelector("#btn-apply"),
+        theme_checkboxes: document.querySelectorAll("#themes input"),
     }
     function getUISelectors(){
         return UISelectors;
     }
 
+    //Start of clearResults
+    function clearResults(){
+        UISelectors.result.innerHTML = "";//Removes already shown meaning
+    }
+    //End of clearResults
+
     //Start of paintMeaning
     function paintMeaning(response)
     {   // response = Fetch result(Array of objects)
-        UISelectors.result.innerHTML = "";//Removes already shown meaning
         response.forEach(item=>
         {
             //Creating Div and Assigning classes to it
@@ -283,6 +297,12 @@ const UI = (function(){
     }
     //End of showHighlight
 
+    //Start of toggleLoader
+    function toggleLoader(){
+        UISelectors.loader.classList.toggle('show');
+    }
+    //End of toggleLoader
+
     //Public functions
     return{
         getUISelectors,
@@ -291,6 +311,8 @@ const UI = (function(){
         paintError,
         showHighlight,
         hideHighlight,
+        toggleLoader,
+        clearResults,
     }
 })();
 //End of UI
@@ -323,9 +345,7 @@ const Dictator = (function(UI){
                 }        
             });
         
-        // },50);
-        
-        
+        // },50);       
     }
 
     function speak(text){   
@@ -369,6 +389,9 @@ const Dictator = (function(UI){
         // },50)
 
     }
+    function stop(){
+        speechSyn.cancel();
+    }
 
     //public functions
     return{
@@ -377,6 +400,7 @@ const Dictator = (function(UI){
         pitch_range_OnChange,
         rate_range_OnChange,
         changeVoice,
+        stop
     }
 
 })(UI);
@@ -466,6 +490,47 @@ const Bookmarker = (function(UI){
 
 
 
+//Start of Themes
+const Theme = (function(UII){//UII is parameter
+    //Private variables and functions
+    const UISelectors = UII.getUISelectors();
+
+    function showBtn(){
+        UISelectors.theme_btn_apply.style = 
+        "display:inline-block";
+    }
+    
+    function change(id){
+        UISelectors.body.classList.remove("light");
+        UISelectors.body.classList.remove("colorful");
+        UISelectors.body.classList.remove("dark");
+        UISelectors.body.classList.add(id)
+        saveToLocalStorage(id);
+
+    }
+
+    function saveToLocalStorage(id){
+        localStorage.setItem("theme", id);
+    }
+
+    function getThemeLocalStorage(){
+        return localStorage.getItem("theme");
+    }
+
+
+    // Public functions
+    return{
+        showBtn,
+        change,
+        getThemeLocalStorage,
+    }
+})(UI); //UI is passed.
+//End of Themes
+
+
+
+
+
 //Start of App
 const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
     //Private Variables & functions
@@ -473,17 +538,23 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
 
     // Start of getData
     function getData(word){
+
+        UI.clearResults();
+        UI.toggleLoader();
+
         Api.get(word)
         .then(res=>{
-            
             if(res[0].fl !== undefined)//Correct word spelling has been entered
                 UI.paintMeaning(res); //Called with arguments of array/arrays returned by api 
             else // Word entered is wrong spelt;
                 UI.paintDidYouMean(res);// Called with array of words:["Coire", "desire", "Zaire", "sire"]
+            UI.toggleLoader();
         })
         .catch(err=>{
             UI.paintError(err); //If Something goes wrong (Internet Connection is down.)
+            UI.toggleLoader();
         })
+
     }
     // End of getData
 
@@ -504,7 +575,8 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
             UISelectors.input_lookup.value = "";
 
             if(inputValue !== "")
-                getData(inputValue)    
+                getData(inputValue)
+            
         }
         // End of Searching Listeners
 
@@ -526,7 +598,11 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
 
             LocalStorage.dictatorAdd(voiceName,rate,pitch);
         })
-        UISelectors.result.addEventListener('click',function(e){
+        UISelectors.btn_stop.addEventListener("click",function(e){
+            Dictator.stop();
+        });
+
+        UISelectors.result.addEventListener('click',function(e){ //When a word is clicked from results
             e.preventDefault();
             if(e.target.tagName === "IMG"){
                 let text = e.target.parentElement.parentElement.textContent; //desire  [di-ˈzī(-ə)r] || desire
@@ -538,6 +614,7 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
                 Dictator.speak(text);
             }
         })
+
         // End of Dictating Related 
 
     
@@ -657,6 +734,26 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
             Dictator.speak(highlightedText);
         });
         //End of Highlight
+
+        
+        //Start of Themes EventListeners
+        UISelectors.theme_checkboxes.forEach(function(checkbox){
+            checkbox.addEventListener( 'change', function() {
+            if(this.checked)
+                Theme.showBtn();
+        });
+        });
+        UISelectors.theme_btn_apply.addEventListener("click",function(e){
+            e.preventDefault();
+            let checked = "";
+            UISelectors.theme_checkboxes.forEach(function(checkbox){
+                if(checkbox.checked){
+                    checked = checkbox;
+                }   
+            })
+            Theme.change(checked.id);
+        })
+        //End of Themes EventListeners
     }
     // End of loadEventListener
 
@@ -666,7 +763,8 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
 
         loadBookmarker();
         loadDictator();
-
+        loadTheme();
+        
         function loadBookmarker(){
             UISelectors.bookmarker_words.innerHTML = "";
             let bookmarkedArray = JSON.parse(localStorage.getItem("bookmarked"));
@@ -690,6 +788,11 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
                     Dictator.changeVoice(object.voiceName);
                 })
             }
+        }
+
+        function loadTheme(){
+            let theme = Theme.getThemeLocalStorage();
+            Theme.change(theme);
         }
         //Returning to use in deleteBookmark 
         return{
