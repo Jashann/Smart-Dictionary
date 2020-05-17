@@ -5,6 +5,7 @@
     --result-background_colorful: rgb(255, 255, 255);
     --input-background_colorful: #ffffff8c;
     --loader-color_colorful: #ffffff;
+    --opposite-color_colorful: #000000a6;
 }
 
 body.colorful {
@@ -58,9 +59,9 @@ body.colorful {
 
 /* Themes */
 .colorful #themes .custom-control-label::after{
-    border: none;
+    border: 1px solid var(--opposite-color)
 }.colorful #themes .custom-control-label::after{
-    background: var(--input-background_colorful)
+    background: beige;
 }
 .colorful #themes .custom-radio .custom-control-input:checked ~ .custom-control-label::after{
     background: var(--gradient-primary_colorful);
