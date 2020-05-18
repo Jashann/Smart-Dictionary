@@ -538,6 +538,17 @@ const QuickSuggestions = (function(UII){
     // Private Variables & functions
     const UISelectors = UII.getUISelectors();
 
+    async function getSuggestions(word){
+        try{
+            const response = await fetch(`https://api.datamuse.com/sug?s=${word}`);
+            const json = await response.json();
+            return json;
+        }
+        catch(err){}
+
+        
+    }
+
     function clearSuggestions(){
         suggestions.innerHTML = "";
     }
@@ -555,12 +566,6 @@ const QuickSuggestions = (function(UII){
             UISelectors.suggestions.append(div);
             }
         })
-    }
-
-    async function getSuggestions(word){
-        const response = await fetch(`https://api.datamuse.com/sug?s=${word}`);
-        const json = await response.json();
-        return json;
     }
 
     // Public functions
