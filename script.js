@@ -463,9 +463,7 @@ const Bookmarker = (function(UI){
     //Start of showAlreadyAddedToBookmark
     function showAlreadyAddedToBookmark(text){
         UISelectors.already_bookmarked.classList.add("show");
-        UISelectors.add_bookmarked.innerHTML = `
-            <h4 class="text-light">${text} is already bookmarked!!</h4> 
-        `;
+        UISelectors.already_bookmarked.innerHTML = `<h4 class="text-light ">${text} is already bookmarked!!</h4>`;
         setTimeout(()=>{
             UISelectors.already_bookmarked.classList.remove("show");
         },3000)
@@ -628,8 +626,10 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
             let inputValue = UISelectors.input_lookup.value;
             UISelectors.input_lookup.value = "";
 
-            if(inputValue !== "")
+            if(inputValue !== ""){
+                QuickSuggestions.clearSuggestions(); //Clearing Suggestions when a word is searched.
                 getData(inputValue)
+            }
             
         }
         // End of Searching Listeners
@@ -817,12 +817,16 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
                 QuickSuggestions.clearSuggestions();
         
                 let li = e.target;
-                UISelectors.input_lookup.value = li.textContent;
+                getData(li.textContent);
+                UISelectors.input_lookup.value = "";
             }
         })
         
         UISelectors.input_lookup.addEventListener("keyup",function(e){ //
             let value = UISelectors.input_lookup.value;
+
+            if(e.key === "Enter")
+                QuickSuggestions.clearSuggestions();
         
             if(value!==""){
                 QuickSuggestions.getSuggestions(value)
