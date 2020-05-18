@@ -831,7 +831,8 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
             if(value!==""){
                 QuickSuggestions.getSuggestions(value)
                 .then(function(res){
-                QuickSuggestions.createSuggestions(res);
+                    if(res)
+                        QuickSuggestions.createSuggestions(res);
                 })
                 .catch();
             }
