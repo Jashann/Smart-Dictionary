@@ -7,8 +7,8 @@
     --contrast-color_dark: #dad9d9;
     --text-color_dark: #dad9d9;
     --text-unfocused_dark: rgb(148, 148, 148);
-    --checkbox-color: #d308cc;
-    --highlight-btn: #00000038;
+    --checkbox-color_dark: #d308cc;
+    --highlight-btn_dark: #00000038;
 }
 
 /* Universal Styles */ 
@@ -65,6 +65,11 @@ color: var(--text-color_dark);
     border-top: 10px solid var(--contrast-color_dark);
 }
 
+/* Loader */
+.colorful .loader{
+    
+}
+
 /* Input */
 .dark .input-group>.form-control, .input-group>.form-control-plaintext, .input-group>.custom-select, .input-group>.custom-file{
     background: var(--input-background_dark);
@@ -112,7 +117,7 @@ color: var(--text-color_dark);
 
 /* Checkbox */
 .dark .custom-control-label::after {
-    background: var(--checkbox-color) no-repeat 50% / 50% 50%;
+    background: var(--checkbox-color_dark) no-repeat 50% / 50% 50%;
 }
 
 /* Highlight-box */
@@ -121,7 +126,7 @@ color: var(--text-color_dark);
     box-shadow: var(--box-shadow---gradient-primary_dark);
 }
 .dark .highlight-box .btn-highlight{
-   background: var(--highlight-btn);
+   background: var(--highlight-btn_dark);
 }
 /* Border */
 .dark .border{
@@ -136,4 +141,15 @@ color: var(--text-color_dark);
 }
 .dark #themes .custom-radio .custom-control-input:checked ~ .custom-control-label::after{
     background: var(--gradient-red_dark);
+}
+
+/* Quick Suggestions */
+.dark #suggestions{
+    background: var(--input-background_dark);
+}
+.dark #suggestions li:not(:last-child){
+    border-bottom: 1px solid var(--highlight-btn_dark);
+}
+.dark #suggestions li:hover{
+    background: var(--gradient-primary_dark);
 }

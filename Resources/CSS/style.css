@@ -192,7 +192,6 @@ a:hover {
     100% { transform: rotate(360deg); }
 }
 
-
 #suggestions{
     background: var(--results-col);
     overflow: hidden;

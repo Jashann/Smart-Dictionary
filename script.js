@@ -463,6 +463,9 @@ const Bookmarker = (function(UI){
     //Start of showAlreadyAddedToBookmark
     function showAlreadyAddedToBookmark(text){
         UISelectors.already_bookmarked.classList.add("show");
+        UISelectors.add_bookmarked.innerHTML = `
+            <h4 class="text-light">${text} is already bookmarked!!</h4> 
+        `;
         setTimeout(()=>{
             UISelectors.already_bookmarked.classList.remove("show");
         },3000)
@@ -471,6 +474,7 @@ const Bookmarker = (function(UI){
     //Start of showAddedToBookmark
     function showAddedToBookmark(text){
         UISelectors.add_bookmarked.classList.remove("d-none");
+        UISelectors.add_bookmarked.innerHTML = `<h4 class="text-light text-capitalize">${text} is bookmarked!!</h4> `;
         setTimeout(()=>{
             UISelectors.add_bookmarked.classList.add("d-none");
         },3000)
@@ -693,7 +697,7 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
                     Bookmarker.showAlreadyAddedToBookmark(text);
                 }
                 else{ //if already is false then this runs
-                    Bookmarker.showAddedToBookmark();
+                    Bookmarker.showAddedToBookmark(text);
                     Bookmarker.addToBookmarker(text,meaning);
                     LocalStorage.bookmarkAdd(text,meaning);
                 }

@@ -62,8 +62,19 @@ body.colorful {
 .colorful #themes .custom-control-label::after{
     border: 1px solid var(--contrast-color)
 }.colorful #themes .custom-control-label::after{
-    background: beige;
+    background: var(--input-background_colorful);
 }
 .colorful #themes .custom-radio .custom-control-input:checked ~ .custom-control-label::after{
+    background: var(--gradient-primary_colorful);
+}
+
+/* Quick Suggestions */
+.colorful #suggestions{
+    background: var(--result-background_colorful);
+}
+/* .colorful #suggestions li:not(:last-child){
+    border-bottom: 1px solid rgb(212, 212, 212);
+} */
+.colorful #suggestions li:hover{
     background: var(--gradient-primary_colorful);
 }
