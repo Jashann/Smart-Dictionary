@@ -1,6 +1,7 @@
 :root{
     --primary-col: #1F9BCF;
     --border-radius: 15px;
+    --results-col: rgb(247, 247, 249);
 }
 body{
     font-family: "Quicksand","Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -119,9 +120,9 @@ a:hover {
 #bookmarker .custom-control.show{
   display: inline-block;
 }
-#bookmarker .custom-control-label::after{
+/* #bookmarker .custom-control-label::after{
   background: #d9534f no-repeat 50% / 50% 50%;
-}
+} */
 
 .btn:focus,button:focus{
     outline: none !important;
@@ -192,6 +193,25 @@ a:hover {
 }
 
 
+#suggestions{
+    background: var(--results-col);
+    overflow: hidden;
+    border-radius: 5px;
+    margin-top: -7px;
+}
+#suggestions li > *{
+    margin: 0;
+}
+#suggestions li:not(:last-child){
+    border-bottom: 1px solid rgb(212, 212, 212);
+}
+#suggestions li{
+    padding: 10px 25px;
+}
+#suggestions li:hover{
+    cursor: pointer;
+    background: rgb(233, 233, 233);
+}
 
 
 

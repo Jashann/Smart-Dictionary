@@ -1,6 +1,7 @@
 :root{
     --gradient-primary_colorful: linear-gradient(to left, #0cebeb, #29ffc6);
-    --gradient-red_colorful: linear-gradient(to right, #f64050, #ffd371);
+    --gradient-primary_right_colorful: linear-gradient(to right, #0cebeb, #29ffc6);
+    --gradient-red_colorful: linear-gradient(to right, #d63f4c, #ffd371);
     --box-shadow-primary_colorful: 0px 0px 5px 2px rgba(0,0,0,0.2);
     --result-background_colorful: rgb(255, 255, 255);
     --input-background_colorful: #ffffff8c;

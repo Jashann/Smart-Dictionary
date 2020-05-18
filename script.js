@@ -138,6 +138,8 @@ const UI = (function(){
         //Related to Themes
         theme_btn_apply: document.querySelector("#btn-apply"),
         theme_checkboxes: document.querySelectorAll("#themes input"),
+        //Quick Suggestion
+        suggestions: document.querySelector("#suggestions"),
     }
     function getUISelectors(){
         return UISelectors;
@@ -531,6 +533,49 @@ const Theme = (function(UII){//UII is parameter
 
 
 
+//Start of QuickSuggestions
+const QuickSuggestions = (function(UII){
+    // Private Variables & functions
+    const UISelectors = UII.getUISelectors();
+
+    function clearSuggestions(){
+        suggestions.innerHTML = "";
+    }
+
+    function createSuggestions(wordsArr,limit=10){
+        //Clearing Suggestions
+        clearSuggestions();
+
+        wordsArr.forEach(function(wordObj,index){
+            if(index < limit)
+            {
+            let div = document.createElement("li");
+            div.classList.add("lead");
+            div.textContent = wordObj.word;
+            UISelectors.suggestions.append(div);
+            }
+        })
+    }
+
+    async function getSuggestions(word){
+        const response = await fetch(`https://api.datamuse.com/sug?s=${word}`);
+        const json = await response.json();
+        return json;
+    }
+
+    // Public functions
+    return{
+        getSuggestions,
+        createSuggestions,
+        clearSuggestions
+    }
+})(UI);
+//End of QuickSuggestions
+
+
+
+
+
 //Start of App
 const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
     //Private Variables & functions
@@ -754,6 +799,33 @@ const App = (function(Api,LocalStorage,UI,Dictator,Bookmarker){
             Theme.change(checked.id);
         })
         //End of Themes EventListeners
+        
+        
+        //Start of QuickSuggestions EventListeners
+        UISelectors.suggestions.addEventListener("click", function(e){// on clicking on suggested word enters it into input box
+            if(e.target.tagName==="LI"){
+                //Clearing Suggestions
+                QuickSuggestions.clearSuggestions();
+        
+                let li = e.target;
+                UISelectors.input_lookup.value = li.textContent;
+            }
+        })
+        
+        UISelectors.input_lookup.addEventListener("keyup",function(e){ //
+            let value = UISelectors.input_lookup.value;
+        
+            if(value!==""){
+                QuickSuggestions.getSuggestions(value)
+                .then(function(res){
+                QuickSuggestions.createSuggestions(res);
+                })
+                .catch();
+            }
+            else //When Empty then clear suggestions
+                QuickSuggestions.clearSuggestions();
+        })
+        //End of QuickSuggestions EventListeners
     }
     // End of loadEventListener
 
