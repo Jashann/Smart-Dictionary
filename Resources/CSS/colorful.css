@@ -1,80 +1,97 @@
-:root{
-    --gradient-primary_colorful: linear-gradient(to left, #0cebeb, #29ffc6);
-    --gradient-primary_right_colorful: linear-gradient(to right, #0cebeb, #29ffc6);
-    --gradient-red_colorful: linear-gradient(to right, #d63f4c, #ffd371);
-    --box-shadow-primary_colorful: 0px 0px 5px 2px rgba(0,0,0,0.2);
-    --result-background_colorful: rgb(255, 255, 255);
-    --input-background_colorful: #ffffff8c;
-    --loader-color_colorful: #ffffff;
-    --contrast-color_colorful: #000000a6;
+:root {
+  --gradient-primary_colorful: linear-gradient(to left, #0cebeb, #29ffc6);
+  --gradient-primary_right_colorful: linear-gradient(
+    to right,
+    #0cebeb,
+    #29ffc6
+  );
+  --gradient-red_colorful: linear-gradient(to right, #d63f4c, #ffd371);
+  --box-shadow-primary_colorful: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  --result-background_colorful: rgb(255, 255, 255);
+  --input-background_colorful: #ffffff8c;
+  --loader-color_colorful: #ffffff;
+  --contrast-color_colorful: #000000a6;
 }
 
 body.colorful {
-    background: var(--gradient-primary_colorful) !important;
+  background: var(--gradient-primary_colorful) !important;
 }
-.colorful .navbar{
-    background: var(--gradient-primary_colorful) !important;
+.colorful .navbar {
+  background: var(--gradient-primary_colorful) !important;
 }
-.colorful .card.py-5.px-3{
-    background: var(--gradient-primary_colorful);
-}
-
-.colorful .input-group>.form-control, .input-group>.form-control-plaintext, .input-group>.custom-select, .input-group>.custom-file{
-    background: var(--result-background_colorful)
+.colorful .card.py-5.px-3 {
+  background: var(--gradient-primary_colorful);
 }
 
-.colorful #results > div{
-    background: var(--result-background_colorful)
+.colorful .input-group > .form-control,
+.input-group > .form-control-plaintext,
+.input-group > .custom-select,
+.input-group > .custom-file {
+  background: var(--result-background_colorful);
 }
 
-
-.colorful .loader{
-    border-top: 10px solid var(--loader-color_colorful);
+.colorful #results > div {
+  background: var(--result-background_colorful);
 }
 
-.colorful a.bg-info,.colorful a.bg-info,.colorful button.bg-info,.colorful button.bg-info, .colorful .btn-info{
-    background: var(--gradient-primary_colorful);
-    box-shadow:  var(--box-shadow-primary_colorful)
-}
-.colorful #btn-stop,.colorful #btn-delete{
-    background: var(--gradient-red_colorful);
-    box-shadow:  var(--box-shadow-primary_colorful)
+.colorful .loader {
+  border-top: 10px solid var(--loader-color_colorful);
 }
 
-.colorful #speechMaker .modal-content, .colorful #bookmarker .modal-content{
-    background: var(--gradient-primary_colorful);
+.colorful a.bg-info,
+.colorful a.bg-info,
+.colorful button.bg-info,
+.colorful button.bg-info,
+.colorful .btn-info {
+  background: var(--gradient-primary_colorful);
+  box-shadow: var(--box-shadow-primary_colorful);
+}
+.colorful #btn-stop,
+.colorful #btn-delete {
+  background: var(--gradient-red_colorful);
+  box-shadow: var(--box-shadow-primary_colorful);
 }
 
-.colorful .form-control{
-    background: var(--input-background_colorful);
+.colorful #speechMaker .modal-content,
+.colorful #bookmarker .modal-content {
+  background: var(--gradient-primary_colorful);
+}
+
+.colorful .form-control {
+  background: var(--input-background_colorful);
 }
 
 .colorful .custom-control-label::after {
-    background: #fdb36a no-repeat 50% / 50% 50%;
+  background: #fdb36a no-repeat 50% / 50% 50%;
 }
 
-.colorful .highlight-box{
-    background: var(--gradient-primary_colorful);
-    box-shadow: var(--box-shadow-primary_colorful);
+.colorful .highlight-box {
+  background: var(--gradient-primary_colorful);
+  box-shadow: var(--box-shadow-primary_colorful);
 }
 
 /* Themes */
-.colorful #themes .custom-control-label::after{
-    border: 1px solid var(--contrast-color)
-}.colorful #themes .custom-control-label::after{
-    background: var(--input-background_colorful);
+.colorful #themes .custom-control-label::after {
+  border: 1px solid var(--contrast-color);
 }
-.colorful #themes .custom-radio .custom-control-input:checked ~ .custom-control-label::after{
-    background: var(--gradient-primary_colorful);
+.colorful #themes .custom-control-label::after {
+  background: #e2e2e2;
+}
+.colorful
+  #themes
+  .custom-radio
+  .custom-control-input:checked
+  ~ .custom-control-label::after {
+  background: var(--gradient-primary_colorful);
 }
 
 /* Quick Suggestions */
-.colorful #suggestions{
-    background: var(--result-background_colorful);
+.colorful #suggestions {
+  background: var(--result-background_colorful);
 }
 /* .colorful #suggestions li:not(:last-child){
     border-bottom: 1px solid rgb(212, 212, 212);
 } */
-.colorful #suggestions li:hover{
-    background: var(--gradient-primary_colorful);
+.colorful #suggestions li:hover {
+  background: var(--gradient-primary_colorful);
 }
