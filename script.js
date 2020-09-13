@@ -583,8 +583,10 @@ const App = (function (Api, LocalStorage, UI, Dictator, Bookmarker) {
     // Start of Searching Listeners
     // Adding event Listener for Searching to btn and input
     UISelectors.search_form.addEventListener("submit", checkValid);
-    UISelectors.input_lookup.addEventListener("input", function () {
+    UISelectors.input_lookup.addEventListener("input", function (e) {
       UI.showSuggestionsAndHideResult();
+      if (!Boolean(e.target.value)) // if input is empty
+        UI.showResultAndHideSuggestions();
     });
     // Check if input is not empty
     function checkValid(e) {
