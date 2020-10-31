@@ -129,7 +129,7 @@ const UI = (function () {
       let html = `
             <div class=""> 
                 <h1 value=${word} class="text-capitalize"> ${word} <span class="h4"> ${pronounceText} </span> 
-                    <a href="#"> <img id="speak" src="./Resources/Icons/iconfinder_mic-microphone-record-speak_2205213.svg" alt="speak" srcset=""> </a>  
+                    <a href="#">  <ion-icon id="pronounce-icon" name="volume-medium"></ion-icon> </a>
                     <a href="#"> <span id="bookmark-icon"> </span> </a>
                 </h1>
                 <hr>

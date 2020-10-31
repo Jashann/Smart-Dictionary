@@ -118,7 +118,7 @@ requirejs(
         UISelectors.result.addEventListener('click', function (e) {
           //When a word is clicked from results
           e.preventDefault()
-          if (e.target.tagName === 'IMG') {
+          if (e.target.id === 'pronounce-icon') {
             let text = e.target.parentElement.parentElement.textContent //desire  [di-ˈzī(-ə)r] || desire
 
             let index = text.indexOf('[')
@@ -265,6 +265,7 @@ requirejs(
             }
           })
           Theme.change(checked.id)
+          $('#themes').modal('hide')
         })
         //End of Themes EventListeners
 

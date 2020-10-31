@@ -44,12 +44,12 @@ body.dark,
 }
 
 /* Hamburger Menu */
-.dark .navbar-light .navbar-toggler {
-  border-color: transparent;
-  border-radius: 50%;
-  border: 1px solid #fff;
-  height: 50px;
-  width: 50px;
+ion-icon {
+  color: rgb(211, 211, 211);
+}
+#bookmark-icon {
+  border-color: rgb(211, 211, 211);
+  background: rgb(211, 211, 211);
 }
 
 /* Card */
