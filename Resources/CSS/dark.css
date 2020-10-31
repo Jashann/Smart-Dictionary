@@ -44,10 +44,10 @@ body.dark,
 }
 
 /* Hamburger Menu */
-ion-icon {
+.dark ion-icon {
   color: rgb(211, 211, 211);
 }
-#bookmark-icon {
+.dark #bookmark-icon {
   border-color: rgb(211, 211, 211);
   background: rgb(211, 211, 211);
 }
@@ -71,10 +71,6 @@ ion-icon {
 }
 .dark .contrast {
   border-top: 10px solid var(--contrast-color_dark);
-}
-
-/* Loader */
-.colorful .loader {
 }
 
 /* Input */
@@ -126,6 +122,8 @@ ion-icon {
   background: var(--gradient-red_dark);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+
   margin: 20px 0 !important;
 }
 .dark .feature img.img-fluid {

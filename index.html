@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Dictionary</title>
-    <link rel="shortcut icon" href="./Resources/logo/favicon.ico" />
+    <link rel="shortcut icon" href="./Resources/Assets/logo/favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap"
       rel="stylesheet"
@@ -19,13 +19,20 @@
     <link rel="stylesheet" href="./Resources/CSS/style.css" />
     <link rel="stylesheet" href="./Resources/CSS/colorful.css" />
     <link rel="stylesheet" href="./Resources/CSS/dark.css" />
-    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"
+    ></script>
   </head>
 
   <body>
     <nav class="navbar navbar-light navbar-expand-lg bg-light">
       <a class="navbar-brand text-info" href="index.html">
-        <img id="logo" src="./Resources/logo/logo.png" alt="logo" />
+        <img id="logo" src="./Resources/Assets/logo/logo.png" alt="logo" />
       </a>
 
       <button
@@ -89,7 +96,7 @@
               <div class="col-4 mb-2">
                 <img
                   class="img-fluid"
-                  src="./Resources/Themes/light.jpg"
+                  src="./Resources/Assets/Themes/light.jpg"
                   alt=""
                 />
                 <div class="custom-control custom-radio mt-2">
@@ -107,7 +114,7 @@
               <div class="col-4 mb-2">
                 <img
                   class="img-fluid"
-                  src="./Resources/Themes/colorful.png.jpg"
+                  src="./Resources/Assets/Themes/colorful.png.jpg"
                   alt=""
                 />
                 <div class="custom-control custom-radio mt-2">
@@ -125,7 +132,7 @@
               <div class="col-4 mb-2">
                 <img
                   class="img-fluid"
-                  src="./Resources/Themes/dark.png.jpg"
+                  src="./Resources/Assets/Themes/dark.png.jpg"
                   alt=""
                 />
                 <div class="custom-control custom-radio mt-2">
@@ -333,21 +340,11 @@
         <h4 class="highlight-text text-light text-center mb-4">Desire</h4>
         <a id="btn-highlight-search" class="btn-highlight"
           >Search
-          <img
-            src="./Resources/Icons/iconfinder_icon-111-search_314807.svg"
-            alt="Search"
-            sizes=""
-            srcset=""
-          />
+          <ion-icon name="search-outline"></ion-icon>
         </a>
         <a id="btn-highlight-pronounce" class="btn-highlight"
           >Pronounce
-          <img
-            src="./Resources/Icons/iconfinder_mic-microphone-record-speak_2205213.svg"
-            alt="Pronounce"
-            sizes=""
-            srcset=""
-          />
+          <ion-icon name="volume-high-outline"></ion-icon>
         </a>
       </div>
     </div>
@@ -445,6 +442,14 @@
       crossorigin="anonymous"
     ></script>
 
-    <script data-main="script.js" src="require.js"></script>
+    <script src="./Resources/Javascript/App/UISelectors.js"></script>
+    <script src="./Resources/Javascript/App/ui.js"></script>
+    <script src="./Resources/Javascript/App/api.js"></script>
+    <script src="./Resources/Javascript/App/bookmark.js"></script>
+    <script src="./Resources/Javascript/App/dictator.js"></script>
+    <script src="./Resources/Javascript/App/localStorage.js"></script>
+    <script src="./Resources/Javascript/App/quickSuggestions.js"></script>
+    <script src="./Resources/Javascript/App/theme.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

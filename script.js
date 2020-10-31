@@ -36,7 +36,6 @@ requirejs(
     //Start of App
     const App = (function (Api, LocalStorage, UI, Dictator, Bookmarker) {
       //Private Variables & functions
-      const UISelectors = UI.getUISelectors()
 
       // Start of getData
       function getData(word) {
