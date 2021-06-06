@@ -272,6 +272,9 @@ textarea,
 }
 
 @media (max-width: 990px) {
+  .nav-item {
+    margin-right: 0rem;
+  }
   .nav-link {
     margin-top: 10px;
   }
