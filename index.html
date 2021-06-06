@@ -9,21 +9,20 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="./Resources/CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="./Resources/CSS/style.css" />
     <link rel="stylesheet" href="./Resources/CSS/colorful.css" />
     <link rel="stylesheet" href="./Resources/CSS/dark.css" />
-    <script
+    
+    
+    <script src="https://kit.fontawesome.com/feb7c09e30.js" crossorigin="anonymous"></script>
+    <script 
+      defer
       type="module"
       src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"
     ></script>
     <script
+    defer
       nomodule=""
       src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"
     ></script>
@@ -45,24 +44,24 @@
 
       <div class="collapse navbar-collapse" id="navbar-items">
         <ul class="navbar-nav ml-auto text-center">
+          <li class="nav-item active enabled">
+            <a class="nav-link" href="index.html"> Home <i class="fas fa-home"></i> </a>
+          </li>
           <li class="nav-item active">
-            <a class="nav-link" href="index.html"> Home </a>
+            <a class="nav-link" href="features.html"> Features <i class="fab fa-ethereum"></i> </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="features.html"> Features </a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" data-toggle="modal" href="#bookmarker">
-              Bookmark
+              Bookmark <i class="fas fa-bookmark"></i>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" data-toggle="modal" href="#speechMaker">
-              Dictator
+              Dictator <i class="fas fa-volume-up"></i>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" href="#themes"> Themes </a>
+          <li class="nav-item active">
+            <a class="nav-link" data-toggle="modal" href="#themes"> Themes <i class="fas fa-gem"></i> </a>
           </li>
         </ul>
       </div>
@@ -179,7 +178,7 @@
           <div class="modal-header">
             <div>
               <h5 class="modal-title text-info" id="exampleModalLabel">
-                Speech Verbaliser
+                Dictator
               </h5>
               <span class="lead">
                 (These settings affect Dictionary pronouncing once SPEAK NOW is
@@ -318,7 +317,7 @@
               id="btn-delete"
               class="btn rounded-pill btn-danger"
             >
-              Select Delete
+              Select
             </button>
             <!-- Select Delete is used in javascript so don't change textContent -->
             <button
@@ -340,11 +339,11 @@
         <h4 class="highlight-text text-light text-center mb-4">Desire</h4>
         <a id="btn-highlight-search" class="btn-highlight"
           >Search
-          <ion-icon name="search-outline"></ion-icon>
+          <i class="fas fa-search"></i>
         </a>
         <a id="btn-highlight-pronounce" class="btn-highlight"
           >Pronounce
-          <ion-icon name="volume-high-outline"></ion-icon>
+          <i class="fas fa-volume-up"></i>
         </a>
       </div>
     </div>
@@ -380,10 +379,10 @@
               <div class="input-group-append ml-2">
                 <button
                   id="btn-search"
-                  type="sumbit"
+                  type="submit"
                   class="input-group-text px-5 rounded-pill bg-info text-light"
                 >
-                  Search
+                  Search <i class="fas fa-search ml-2"></i> 
                 </button>
               </div>
             </form>

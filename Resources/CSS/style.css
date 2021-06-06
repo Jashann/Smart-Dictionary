@@ -43,8 +43,7 @@ a:hover {
   border-radius: var(--border-radius);
 }
 
-#speechMaker .modal-content,
-#bookmarker .modal-content {
+.modal-content {
   border-radius: var(--border-radius);
   border: transparent;
 }
@@ -63,15 +62,6 @@ a:hover {
 .searchable {
   color: var(--primary-col);
   font-weight: bolder;
-}
-
-#bookmark-icon {
-  border: 2px solid #000;
-  background: black;
-  width: 20px;
-  height: 30px;
-  display: inline-block;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 52% 66%, 0 100%, 0 100%);
 }
 
 .highlight-box {
@@ -186,6 +176,7 @@ button:focus {
 .feature h5 {
   background: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 20px 0 !important;
 }
@@ -193,6 +184,7 @@ button:focus {
 .loader {
   border: transparent; /* Light grey */
   border-top: 10px solid var(--primary-col); /* Blue */
+  border-bottom: 10px solid #ff768e;
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -231,6 +223,61 @@ button:focus {
 #suggestions li:hover {
   cursor: pointer;
   background: rgb(233, 233, 233);
+}
+
+.navbar-nav .nav-link {
+  background: #f7f7f9;
+  border-radius: 5px;
+}
+
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
+  color: #494c4c;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+#results > * {
+  font-family: 'Nato Serif', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+div#add-bookmarked,
+div#already-bookmarked {
+  border-radius: 8px;
+  text-align: center;
+  background: #1f9bcf !important;
+}
+
+.searchable {
+  border-radius: 500px;
+  background: #fff;
+}
+
+textarea,
+.form-control {
+  border-radius: 10px;
+}
+
+@media (max-width: 990px) {
+  .nav-link {
+    margin-top: 10px;
+  }
+  .navbar-collapse {
+    margin-top: 50px;
+  }
 }
 
 @media (max-width: 768px) {

@@ -70,7 +70,7 @@ const UI = (function () {
             // Removes phrases, Keeps only words
             synonymsC =
               synonymsC +
-              `<a href="#" class="text-capitalize searchable h5 px-1">${word}</a> `
+              `<a href="#" class="btn text-capitalize searchable h5 px-4">${word} <i class='fas fa-search'></i> </a> `
         })
         synonyms = synonymsC
       }
@@ -83,8 +83,8 @@ const UI = (function () {
       let html = `
             <div class=""> 
                 <h1 value=${word} class="text-capitalize"> ${word} <span class="h4"> ${pronounceText} </span> 
-                    <a href="#">  <ion-icon id="pronounce-icon" name="volume-high"></ion-icon> </a>
-                    <a href="#"> <span id="bookmark-icon"> </span> </a>
+                    <a href="#"> <i id="pronounce-icon" class='fas fa-volume-up text-info'></i> </a>
+                    <a href="#"> <i id="bookmark-icon" class='fas fa-bookmark text-info text-info'></i> </a>
                 </h1>
                 <hr>
                 <h5 class="text-capitalize">${item.fl}</h5>

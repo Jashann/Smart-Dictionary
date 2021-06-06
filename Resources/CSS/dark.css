@@ -1,7 +1,7 @@
 :root {
   --gradient-primary_dark: linear-gradient(to left, #203a44, #203a43, #2c5364);
   --gradient-red_dark: linear-gradient(315deg, #0cbaba 0%, #c121bb 74%);
-  --box-shadow-dark: 0px 0px 5px 2px rgba(0, 0, 0, 0.8);
+  --box-shadow-dark: 0px 0px 5px 2px rgba(0, 0, 0, 0.45);
   --result-background_dark: rgb(16, 34, 41);
   --input-background_dark: #0000008c;
   --contrast-color_dark: #dad9d9;
@@ -46,10 +46,6 @@ body.dark,
 /* Hamburger Menu */
 .dark ion-icon {
   color: rgb(211, 211, 211);
-}
-.dark #bookmark-icon {
-  border-color: rgb(211, 211, 211);
-  background: rgb(211, 211, 211);
 }
 
 /* Card */
@@ -172,4 +168,23 @@ body.dark,
 }
 .dark #suggestions li:hover {
   background: var(--gradient-primary_dark);
+}
+
+.dark .navbar-nav .nav-link {
+  background: #203a44;
+  box-shadow: var(--box-shadow-dark) !important;
+}
+
+.dark .searchable {
+  background: #203a44;
+  color: #fff;
+}
+
+.dark .modal .searchable {
+  background: none;
+}
+
+.dark i#pronounce-icon,
+.dark i#bookmark-icon {
+  color: #c2c2c2 !important;
 }

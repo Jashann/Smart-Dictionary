@@ -95,3 +95,20 @@ body.colorful {
 .colorful #suggestions li:hover {
   background: var(--gradient-primary_colorful);
 }
+
+.colorful .navbar-nav .nav-link {
+  background: #ffffffde;
+}
+
+.colorful .searchable {
+  background: #29ffc6;
+  color: #fff;
+}
+
+.colorful i#pronounce-icon {
+  color: #29ffc6 !important;
+}
+
+.colorful i#bookmark-icon {
+  color: #0decea !important;
+}
